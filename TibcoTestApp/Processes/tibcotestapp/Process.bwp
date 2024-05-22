@@ -9,6 +9,7 @@
     xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/file/v2"
     xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/file"
     xmlns:ns3="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.read"
+    xmlns:ns4="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.write"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
@@ -19,10 +20,10 @@
                 <variable>Timer</variable>
             </endingVariables>
         </task>
-        <task name="ReadFile">
+        <task name="WriteFile">
             <endingVariables>
-                <variable>ReadFile-input</variable>
-                <variable>ReadFile</variable>
+                <variable>WriteFile-input</variable>
+                <variable>WriteFile</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -207,17 +208,6 @@
             </xs:complexType>
             <xs:element name="TimerOutputSchema" type="tns:TimerOutputSchemaType"/>
         </xs:schema>
-        <schema
-            targetNamespace="http://www.tibco.com/namespaces/tnt/plugins/file/v2"
-            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/namespaces/tnt/plugins/file/v2">
-            <complexType name="ReadActivityInputClass">
-                <sequence>
-                    <element maxOccurs="1" minOccurs="0" name="fileName" type="string"/>
-                    <element maxOccurs="1" minOccurs="0" name="encoding" type="string"/>
-                </sequence>
-            </complexType>
-            <element name="ReadActivityInputClass" type="tns:ReadActivityInputClass"/>
-        </schema>
         <schema
             targetNamespace="http://www.tibco.com/namespaces/tnt/plugins/file"
             xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/namespaces/tnt/plugins/file">
@@ -579,9 +569,9 @@
             <element name="ReadFileFaultData" type="tns:ReadFileFaultDataType"/>
         </schema>
         <schema elementFormDefault="unqualified"
-            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.read"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.write"
             xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:Q1="http://schemas.tibco.com/bw/plugins/file/5.0/fileExceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.read">
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/file/5.0/fileExceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.write">
             <import namespace="http://schemas.tibco.com/bw/plugins/file/5.0/fileExceptions"/>
             <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
             <complexType name="ActivityErrorDataType">
@@ -692,7 +682,7 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
-                                    <layoutConstraint x="176"
+                                    <layoutConstraint x="324"
                                     xsi:type="notation:Bounds" y="77"/>
                                     </children>
                                     <children type="4002">
@@ -727,7 +717,7 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.2"/>
-                                    <layoutConstraint x="324"
+                                    <layoutConstraint x="133"
                                     xsi:type="notation:Bounds" y="77"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
@@ -777,7 +767,7 @@
         <element href="//0"/>
         <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
             </children>
@@ -787,27 +777,31 @@
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints points="[25, 0, -166, 0]$[167, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
+    <tibex:NamespaceRegistry enabled="true">
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/namespaces/tnt/plugins/file" prefix="tns"/>
+    </tibex:NamespaceRegistry>
     <bpws:variables>
         <bpws:variable element="ns:ProcessContext"
             name="_processContext" sca-bpel:internal="true"/>
         <bpws:variable element="ns0:TimerOutputSchema" name="Timer" sca-bpel:internal="true"/>
-        <bpws:variable element="ns1:ReadActivityInputClass"
-            name="ReadFile-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:ReadActivityOutputTextClass"
-            name="ReadFile" sca-bpel:internal="true"/>
-        <bpws:variable element="ns3:ActivityErrorData"
-            name="_error_ReadFile" sca-bpel:internal="true"/>
+        <bpws:variable element="ns2:WriteActivityInputTextClass"
+            name="WriteFile-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns2:WriteActivityOutputClass"
+            name="WriteFile" sca-bpel:internal="true"/>
+        <bpws:variable element="ns4:ActivityErrorData"
+            name="_error_WriteFile" sca-bpel:internal="true"/>
         <bpws:variable element="ns:ErrorReport" name="_error" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
@@ -821,8 +815,8 @@
     <bpws:scope name="scope">
         <bpws:flow name="flow">
             <bpws:links>
-                <bpws:link name="TimerToReadFile" tibex:linkType="SUCCESS"/>
-                <bpws:link name="ReadFileToExit" tibex:linkType="SUCCESS"/>
+                <bpws:link name="TimerToWriteFile" tibex:linkType="SUCCESS"/>
+                <bpws:link name="WriteFileToExit" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -830,7 +824,7 @@
                     tibex:xpdlId="3dec49cf-2d19-4db5-86e7-1e04f668e567"
                     variable="Timer" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:sources>
-                        <bpws:source linkName="TimerToReadFile"/>
+                        <bpws:source linkName="TimerToWriteFile"/>
                     </bpws:sources>
                     <tibex:eventSource>
                         <bwext:BWActivity
@@ -854,42 +848,42 @@
                     </tibex:eventSource>
                 </tibex:receiveEvent>
             </bpws:extensionActivity>
+            <bpws:exit name="Exit" tibex:xpdlId="85de7b15-929a-4a30-853e-c3fac9c6c2d2">
+                <bpws:targets>
+                    <bpws:target linkName="WriteFileToExit"/>
+                </bpws:targets>
+            </bpws:exit>
             <bpws:extensionActivity>
-                <tibex:activityExtension inputVariable="ReadFile-input"
-                    name="ReadFile" outputVariable="ReadFile"
-                    tibex:xpdlId="0be0d4f9-3ef3-45a7-bf82-0c5adab43f79" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                <tibex:activityExtension inputVariable="WriteFile-input"
+                    name="WriteFile" outputVariable="WriteFile"
+                    tibex:xpdlId="63189641-389b-43b4-ad03-b735b04a24b6" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="TimerToReadFile"/>
+                        <bpws:target linkName="TimerToWriteFile"/>
                     </bpws:targets>
                     <bpws:sources>
-                        <bpws:source linkName="ReadFileToExit"/>
+                        <bpws:source linkName="WriteFileToExit"/>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?> &lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/namespaces/tnt/plugins/file/v2&quot; version=&quot;2.0&quot;> &lt;xsl:template name=&quot;ReadFile-input&quot; match=&quot;/&quot;> &lt;tns:ReadActivityInputClass/>&lt;/xsl:template> &lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/namespaces/tnt/plugins/file&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;WriteFile-input&quot; match=&quot;/&quot;>&lt;tns:WriteActivityInputTextClass>&lt;textContent>&lt;xsl:value-of select=&quot;&amp;quot;This is another test&amp;quot;&quot;/>&lt;/textContent>&lt;/tns:WriteActivityInputTextClass>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
-                        <bwext:BWActivity activityTypeID="bw.file.read"
+                        <bwext:BWActivity activityTypeID="bw.file.write"
                             xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
                             xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
                             xmlns:file="http://ns.tibco.com/bw/palette/file" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                             <activityConfig>
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/file#//ReadFile"/>
-                                    <value
-                                    fileName="D:\Saptarshi\RiyadhAirport\Logs\configmap.txt"
-                                    readAs="text" xsi:type="file:ReadFile"/>
+                                    <type href="http://ns.tibco.com/bw/palette/file#//WriteFile"/>
+                                    <value compressFile="None"
+                                    encoding="text"
+                                    fileName="D:\Saptarshi\RiyadhAirport\Logs\configmap.txt" xsi:type="file:WriteFile"/>
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:exit name="Exit" tibex:xpdlId="85de7b15-929a-4a30-853e-c3fac9c6c2d2">
-                <bpws:targets>
-                    <bpws:target linkName="ReadFileToExit"/>
-                </bpws:targets>
-            </bpws:exit>
         </bpws:flow>
     </bpws:scope>
 </bpws:process>
